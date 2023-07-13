@@ -30,12 +30,11 @@ extension Route: Hashable {
 }
 
 extension Route: View {
-    
     var body: some View {
         
         switch self {
-        case .photoDetail(let item):
-            return photoDetailView()
+        case .photoDetail(let photoId):
+            return photoDetailView(photoId: photoId)
         }
     }
 }

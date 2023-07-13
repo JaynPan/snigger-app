@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 
 enum ImageResponse {
-    case Success(image: UIImage)
+    case Success(image: UIImage, id: String)
     case Failure
 }
 
 struct ApiResponse: Decodable {
     var url: String
+    var id: String
 }
 
 class ImageProvider {
@@ -70,7 +71,7 @@ class ImageProvider {
         }
         
         let image = UIImage(data: content)!
-        let response = ImageResponse.Success(image: image)
+        let response = ImageResponse.Success(image: image, id: apiResponse.id)
         completion?(response)
     }
 }

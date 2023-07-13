@@ -8,14 +8,71 @@
 import SwiftUI
 
 struct photoDetailView: View {
+    let photoId: String;
+    @State private var memePhoto: MemePhoto?
     
     var body: some View {
-        Text("detail view")
+        VStack(spacing: 20) {
+            AsyncImage(url: URL(string: memePhoto?.url ?? "")) { image in
+                image
+                    .resizable()
+                    .frame(width: 320, height: 320)
+                    .aspectRatio(contentMode: .fit)
+                    .shadow(radius: 8)
+                    .cornerRadius(8)
+            } placeholder: {
+                Rectangle()
+                    .foregroundColor(.secondary)
+                    .frame(width: 320, height: 320)
+            }
+
+            Spacer()
+        }
+        .padding()
+        .task {
+            do {
+                memePhoto = try await getMemePhoto()
+            } catch {
+                print("something went wrong")
+            }
+        }
     }
+    
+    func getMemePhoto() async throws -> MemePhoto {
+        let endpoint = "https://us-central1-giggle-ff996.cloudfunctions.net/app/api/photos?filePath=\(photoId)"
+        guard let url = URL(string: endpoint) else {
+            throw MemeError.invalidURL
+        }
+    
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw MemeError.invalidResponse
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return try decoder.decode(MemePhoto.self, from : data)
+        } catch {
+            throw MemeError.invalidData
+        }
+    }
+}
+
+struct MemePhoto: Codable {
+    let url: String
+}
+
+enum MemeError: Error {
+    case invalidURL
+    case invalidResponse
+    case invalidData
 }
 
 struct photoDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        photoDetailView()
+        photoDetailView(photoId: "cats/00a08d6b-cb86-4189-85df-fbd663aa1991.png")
     }
 }

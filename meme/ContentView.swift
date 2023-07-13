@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationStack(path: $routerManager.routes) {
             Group {
                 Button("hello world", action: {
-                    routerManager.push(to: .photoDetail(id: "123"))
+                    routerManager.push(to: .photoDetail(id: "cats/00a08d6b-cb86-4189-85df-fbd663aa1991.png"))
                 })
             }
             .navigationTitle("Giggle")

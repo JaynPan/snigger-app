@@ -25,6 +25,7 @@
 		F45704DD2A5FEA680087705C /* photoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45704DC2A5FEA680087705C /* photoDetailView.swift */; };
 		F45704E22A5FF4720087705C /* route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45704E12A5FF4720087705C /* route.swift */; };
 		F45704E42A5FF6EF0087705C /* navigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45704E32A5FF6EF0087705C /* navigationRouter.swift */; };
+		F45839432A6049A4007BFFC0 /* routeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45839422A6049A4007BFFC0 /* routeFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		F45704DE2A5FEC580087705C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F45704E12A5FF4720087705C /* route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = route.swift; sourceTree = "<group>"; };
 		F45704E32A5FF6EF0087705C /* navigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationRouter.swift; sourceTree = "<group>"; };
+		F45839422A6049A4007BFFC0 /* routeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routeFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				F45704DC2A5FEA680087705C /* photoDetailView.swift */,
 				F45704E12A5FF4720087705C /* route.swift */,
 				F45704E32A5FF6EF0087705C /* navigationRouter.swift */,
+				F45839422A6049A4007BFFC0 /* routeFinder.swift */,
 			);
 			path = meme;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				F45704E42A5FF6EF0087705C /* navigationRouter.swift in Sources */,
 				F422DE142A5BB97900C64C8E /* imageProvider.swift in Sources */,
 				F45704DD2A5FEA680087705C /* photoDetailView.swift in Sources */,
+				F45839432A6049A4007BFFC0 /* routeFinder.swift in Sources */,
 				F422DE072A5BA3FC00C64C8E /* widget.intentdefinition in Sources */,
 				F45704E22A5FF4720087705C /* route.swift in Sources */,
 				F422DDE62A5BA3B400C64C8E /* ContentView.swift in Sources */,

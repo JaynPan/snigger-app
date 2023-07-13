@@ -16,11 +16,19 @@ struct memeApp: App {
             ContentView()
                 .environmentObject(routerManager)
                 .onOpenURL { url in
-                    if url.host() == "photodetail" {
-                        print("photo detail trigger")
-                        routerManager.push(to: .photoDetail(id: "123"))
+                    Task {
+                        await handleDeeplink(from: url)
                     }
                 }
+        }
+    }
+}
+
+extension memeApp {
+    func handleDeeplink(from url: URL) async {
+        let routeFinder = RouteFinder()
+        if let route = await routeFinder.find(from: url) {
+            routerManager.push(to: route)
         }
     }
 }

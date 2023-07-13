@@ -12,11 +12,11 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), image: UIImage(named: "placeholder")!)
+        SimpleEntry(date: Date(), image: UIImage(named: "placeholder")!, id: "cats/00a08d6b-cb86-4189-85df-fbd663aa1991.png")
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), image: UIImage(named: "placeholder")!)
+        let entry = SimpleEntry(date: Date(), image: UIImage(named: "placeholder")!, id: "cats/00a08d6b-cb86-4189-85df-fbd663aa1991.png")
         completion(entry)
     }
 
@@ -28,11 +28,11 @@ struct Provider: IntentTimelineProvider {
             
             switch apodImageResponse {
             case .Failure:
-                entry = SimpleEntry(date: Date(), image: UIImage(named: "placeholder")!)
+                entry = SimpleEntry(date: Date(), image: UIImage(named: "placeholder")!, id: "123")
                 policy = .after(Calendar.current.date(byAdding: .minute, value: 15, to: Date())!)
                 break
-            case .Success(let image):
-                entry = SimpleEntry(date: Date(), image: image)
+            case .Success(let image, let id):
+                entry = SimpleEntry(date: Date(), image: image, id: id)
                 policy = .after(Calendar.current.date(byAdding: .minute, value: 2, to: Date())!)
                 break
             }
@@ -47,8 +47,7 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let image: UIImage
-//    var text: String = ""
-//    var shouldShowText: Bool = false
+    let id: String
 }
 
 struct widgetEntryView : View {
@@ -62,7 +61,7 @@ struct widgetEntryView : View {
                   .resizable()
                   .aspectRatio(contentMode: .fill)
         }
-        .widgetURL(URL(string: "myapp://photos/123"))
+        .widgetURL(URL(string: "myapp://photodetail?id=\(entry.id)"))
     }
 }
 
@@ -80,7 +79,7 @@ struct widget: Widget {
 
 struct widget_Previews: PreviewProvider {
     static var previews: some View {
-        widgetEntryView(entry: SimpleEntry(date: Date(), image:  UIImage(named: "placeholder")!))
+        widgetEntryView(entry: SimpleEntry(date: Date(), image:  UIImage(named: "placeholder")!, id: "placeholder"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
