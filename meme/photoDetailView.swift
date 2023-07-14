@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct photoDetailView: View {
     let photoId: String;
@@ -27,6 +28,16 @@ struct photoDetailView: View {
             }
 
             Spacer()
+            
+            Button("download", action: {
+                
+                
+                if let url = URL(string: memePhoto!.url),
+                     let data = try? Data(contentsOf: url),
+                     let image = UIImage(data: data) {
+                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                 }
+            })
         }
         .padding()
         .task {
