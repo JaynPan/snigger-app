@@ -11,6 +11,7 @@ import UIKit
 struct photoDetailView: View {
     let photoId: String;
     @State private var memePhoto: MemePhoto?
+    @State private var showAlert = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -30,12 +31,14 @@ struct photoDetailView: View {
             Spacer()
             
             Button("download", action: {
-                
-                
                 if let url = URL(string: memePhoto!.url),
                      let data = try? Data(contentsOf: url),
                      let image = UIImage(data: data) {
                      UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    
+                    DispatchQueue.main.async {
+                        showAlert = true
+                    }
                  }
             })
         }
@@ -46,6 +49,13 @@ struct photoDetailView: View {
             } catch {
                 print("something went wrong")
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Download Successfully!"),
+                message: Text("Image has been saved to Photos"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
     
