@@ -15,6 +15,8 @@ struct photoDetailView: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            Spacer()
+            
             AsyncImage(url: URL(string: memePhoto?.url ?? "")) { image in
                 image
                     .resizable()
@@ -26,21 +28,19 @@ struct photoDetailView: View {
                 Rectangle()
                     .foregroundColor(.secondary)
                     .frame(width: 320, height: 320)
+                    .shadow(radius: 8)
+                    .cornerRadius(8)
             }
-
-            Spacer()
+                        
+            Button("Download"){downloadPhoto()}
+            .padding(.horizontal, 128)
+            .padding(.vertical, 16)
+            .background(.yellow)
+            .foregroundStyle(.white)
+            .shadow(radius: 32)
+            .clipShape(Capsule())
             
-            Button("download", action: {
-                if let url = URL(string: memePhoto!.url),
-                     let data = try? Data(contentsOf: url),
-                     let image = UIImage(data: data) {
-                     UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                    
-                    DispatchQueue.main.async {
-                        showAlert = true
-                    }
-                 }
-            })
+            Spacer()
         }
         .padding()
         .task {
@@ -78,6 +78,18 @@ struct photoDetailView: View {
             return try decoder.decode(MemePhoto.self, from : data)
         } catch {
             throw MemeError.invalidData
+        }
+    }
+    
+    func downloadPhoto() {
+        if let url = URL(string: memePhoto!.url),
+           let data = try? Data(contentsOf: url),
+           let image = UIImage(data: data) {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            
+            DispatchQueue.main.async {
+                showAlert = true
+            }
         }
     }
 }

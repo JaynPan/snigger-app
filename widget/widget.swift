@@ -33,7 +33,7 @@ struct Provider: IntentTimelineProvider {
                 break
             case .Success(let image, let id):
                 entry = SimpleEntry(date: Date(), image: image, id: id)
-                policy = .after(Calendar.current.date(byAdding: .minute, value: 2, to: Date())!)
+                policy = .after(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!)
                 break
             }
             

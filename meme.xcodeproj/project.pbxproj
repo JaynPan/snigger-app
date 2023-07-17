@@ -26,6 +26,7 @@
 		F45704E22A5FF4720087705C /* route.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45704E12A5FF4720087705C /* route.swift */; };
 		F45704E42A5FF6EF0087705C /* navigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45704E32A5FF6EF0087705C /* navigationRouter.swift */; };
 		F45839432A6049A4007BFFC0 /* routeFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45839422A6049A4007BFFC0 /* routeFinder.swift */; };
+		F45839472A64F8C5007BFFC0 /* instructionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45839462A64F8C5007BFFC0 /* instructionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		F45704E12A5FF4720087705C /* route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = route.swift; sourceTree = "<group>"; };
 		F45704E32A5FF6EF0087705C /* navigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationRouter.swift; sourceTree = "<group>"; };
 		F45839422A6049A4007BFFC0 /* routeFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = routeFinder.swift; sourceTree = "<group>"; };
+		F45839462A64F8C5007BFFC0 /* instructionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instructionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				F45704E12A5FF4720087705C /* route.swift */,
 				F45704E32A5FF6EF0087705C /* navigationRouter.swift */,
 				F45839422A6049A4007BFFC0 /* routeFinder.swift */,
+				F45839462A64F8C5007BFFC0 /* instructionModel.swift */,
 			);
 			path = meme;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				F45704E22A5FF4720087705C /* route.swift in Sources */,
 				F422DDE62A5BA3B400C64C8E /* ContentView.swift in Sources */,
 				F422DDE42A5BA3B400C64C8E /* memeApp.swift in Sources */,
+				F45839472A64F8C5007BFFC0 /* instructionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +427,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meme/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "need photo permission";
+				INFOPLIST_KEY_CFBundleDisplayName = Giggle;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow $(PRODUCT_NAME) to save images in to your photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -455,7 +460,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meme/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "need photo permission";
+				INFOPLIST_KEY_CFBundleDisplayName = Giggle;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow $(PRODUCT_NAME) to save images in to your photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
